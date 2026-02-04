@@ -1,0 +1,15 @@
+name: Say Hello Action
+description: A simple GitHub Action that says hello.
+author: Scaffoldly <github.com/scaffoldly>
+branding:
+  icon: megaphone
+  color: gray-dark
+inputs: {}
+outputs: {}
+runs:
+  using: "composite"
+  steps:
+    - name: Say Hello
+      shell: bash
+      run: >
+        echo "Hello!"
