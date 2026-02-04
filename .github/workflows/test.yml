@@ -1,0 +1,28 @@
+name: Test Build and Push Docker Image
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  pre:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: scaffoldly/docker-build-push-action@pre
+
+  main:
+    needs: pre
+    runs-on: ubuntu-latest
+    steps:
+      - uses: scaffoldly/docker-build-push-action@main
+
+  post:
+    needs: main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: scaffoldly/docker-build-push-action@post
